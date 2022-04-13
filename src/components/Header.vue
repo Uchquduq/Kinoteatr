@@ -3,12 +3,15 @@
     <BNavbar type="dark" class="navbar" variant="dark">
       <BContainer>
         <BNavbarBrand href="#">
-          MovieDB
+          Kinoteatr
         </BNavbarBrand>
         <Form>
-          <input class="mr-sm-2 search-input" placeholder="Search"
-          v-model="searchValue" debounce="500">
-          </input>
+          <b-form-input
+            class="mr-sm-2 search-input"
+            placeholder="Search"
+            v-model="searchValue"
+            debounce="500"
+          />
         </Form>
       </BContainer>
     </BNavbar>
@@ -16,7 +19,7 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Header",
@@ -27,14 +30,18 @@ export default {
     searchValue: "onSearchValueChanged",
   },
   methods: {
-    ...mapActions("movies", ["searchMovies", "fetchMovies", "toogleSearchState"]),
+    ...mapActions("movies", [
+      "searchMovies",
+      "fetchMovies",
+      "toogleSearchState",
+    ]),
     onSearchValueChanged(val) {
       if (val) {
         this.searchMovies(val);
-        this.toogleSearchState(true)
+        this.toogleSearchState(true);
       } else {
-        this.fetchMovies()
-        this.toogleSearchState(false)
+        this.fetchMovies();
+        this.toogleSearchState(false);
       }
     },
   },
@@ -59,5 +66,4 @@ export default {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(0, 0, 0, 0.6);
 }
-
 </style>

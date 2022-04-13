@@ -13,7 +13,7 @@
           </BButton>
         </div>
         <div class="col pl-2">
-          <BButton size="md" block variant="outline-light" @click="emitRemoveEvent">
+          <BButton size="md" block variant="outline-light" @click="emitRemoveEvent(movie)">
             Remove
           </BButton>
         </div>
@@ -39,8 +39,8 @@ export default {
     },
   },
   methods: {
-    emitRemoveEvent() {
-      this.$emit('removeItem', this.movie.imdbID, this.movie.Title)
+    emitRemoveEvent(movie) {
+      this.$emit('removeItem', movie)
     },
     showInfoModalEvent() {
       this.$emit('showModal', this.movie.imdbID)

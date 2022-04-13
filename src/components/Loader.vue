@@ -1,6 +1,6 @@
 <template>
   <div class="loader-wrap" v-if="isShowLoader">
-    <b-spinner type="grow" variant="light" label="Loading...">
+    <b-spinner type="grow" variant="light" label="">
     </b-spinner>
   </div>
 </template>

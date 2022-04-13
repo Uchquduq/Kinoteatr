@@ -7,7 +7,9 @@
     prev-text="Prev"
     next-text="Next"
     />
-    {{ currentPage }}
+    
+    <b-form-input type="number" class="ml-2 mr-sm-2 pl-2 pr-2" style="background: inherit ; color: white;max-width: 70px; height:32px" v-model.number="currentPage"></b-form-input>
+    
   </div>
 </template>
 

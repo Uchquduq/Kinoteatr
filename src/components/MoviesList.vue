@@ -3,9 +3,9 @@
     <h3 class="list-title">
       {{ listTitle }}
     </h3>
-    <BRow>
+    <BRow class="justify-content-md-center">
       <template v-if="isExist">
-        <BCol cols="3" v-for="(movie, key) in list" :key="key">
+        <BCol col lg="3" md="4" cols="12" sm="6" v-for="(movie, key) in list" :key="key">
           <MovieItem
             :movie="movie"
             @mouseover.native="onMouseOver(movie.Poster)"
@@ -51,7 +51,7 @@ export default {
       return Boolean(Object.keys(this.list).length);
     },
     listTitle() {
-      return this.isSearch ? "Search result" : "IMDB Top 250";
+      return this.isSearch ? "Search result" : "TOP 250 FILMS";
     },
     selectedMovie() {
       return this.selectedMovieID ? this.list[this.selectedMovieID] : null;
@@ -63,12 +63,12 @@ export default {
     onMouseOver(poster) {
       this.$emit("changePoster", poster);
     },
-    async onRemoveItem({ id, title }) {
+    async onRemoveItem(movie) {
       const isConfirmed = await this.$bvModal.msgBoxConfirm(
-        `Are you sure delete ${title}?`
+        `Are you sure delete ${movie.Title}?`
       );
       if (isConfirmed) {
-        this.removeMovie(id);
+        this.removeMovie(movie.imdbID);
         this.showNotify({
           msg: "Movie deleted successfull",
           variant: "success",
